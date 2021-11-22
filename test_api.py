@@ -55,3 +55,30 @@ def test_verify_can_relist():
     print(f"Expected canRelist: {expected_can_relist}, returned status "
           f"from api: {can_relist_returned}")
     assert can_relist_returned == expected_can_relist
+
+
+def test_verify_promotions_description():
+    """ Test checks Promotions element description returned contains the
+        expected description
+
+    Returns:
+        None
+    """
+    print("Test verifies Promotions element description returned contains the "
+          "expected description")
+    expected_element_name = "Gallery"
+    expected_description = "Good position in category"
+    api_data = get_api_data(url)
+    promotions = api_data.get("Promotions", [])
+
+    # Parse promotions list to find specific element to test
+    for promotion in promotions:
+        if promotion.get("Name") == expected_element_name:
+            print("Verifying Promotion element description contains expected "
+                  f"string: '{expected_description}', returned description: "
+                  f"'{promotion.get('Description')}'")
+            assert expected_description in promotion.get("Description")
+            break
+    else:
+        assert False, ("No Promotion with Name element: "
+                       f"{expected_element_name}")
