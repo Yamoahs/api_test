@@ -31,7 +31,7 @@ def test_verify_name():
     Returns:
         None
     """
-    print(f"Test verifies name returned is expected name")
+    print("Test verifies name returned is expected name")
     expected_name = "Carbon credits"
     api_data = get_api_data(url)
     name_returned = api_data.get("Name")
@@ -39,4 +39,3 @@ def test_verify_name():
     print(f"Expected name: {expected_name}, name returned "
           f"from api: {name_returned}")
     assert name_returned == expected_name
-
