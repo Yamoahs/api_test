@@ -39,3 +39,19 @@ def test_verify_name():
     print(f"Expected name: {expected_name}, name returned "
           f"from api: {name_returned}")
     assert name_returned == expected_name
+
+
+def test_verify_can_relist():
+    """ Test checks the canRelist field from the api data is as expected
+
+    Returns:
+        None
+    """
+    print("Test verifies canRelist field returned is as expected")
+    expected_can_relist = True
+    api_data = get_api_data(url)
+    can_relist_returned = api_data.get("CanRelist")
+
+    print(f"Expected canRelist: {expected_can_relist}, returned status "
+          f"from api: {can_relist_returned}")
+    assert can_relist_returned == expected_can_relist
